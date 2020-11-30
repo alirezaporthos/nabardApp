@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,22 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
+Route::get('/dashboard', 'HomeController@index')->name('dashboard')->middleware('auth');
+
+Route::namespace('Admin')->name('dashboard.')->middleware('auth')->group(function(){
+
+    Route::get('/', 'DashboardController@index')->name('index');
+
+    //teams route
+    Route::resource('teams', 'TeamController')->only(['edit','update','index','destroy']);
+
+    Route::post('/teams/download', 'TeamController@download')->name('teams.file-download');
+
+
+
+
+});
+
