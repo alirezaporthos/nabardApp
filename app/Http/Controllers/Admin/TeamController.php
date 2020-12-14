@@ -44,7 +44,7 @@ class TeamController extends Controller
 
     public function download( Request $request){
         $filePath = $request->filePath;
-        // dd($filePath);
+        dd($filePath);
         $fileType = mime_content_type($filePath);
         $filesize = filesize($filePath);
 

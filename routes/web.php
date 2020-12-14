@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
 Route::get('/', function () {
     return view('welcome');
@@ -35,4 +36,7 @@ Route::namespace('Admin')->name('dashboard.')->middleware('auth')->group(functio
 
 
 });
+
+Route::post('/sign-up', 'TeamController@store')->name('sign-up');
+
 

@@ -119,7 +119,7 @@ function fileDownload(filePath,id){
         type: 'post',
         url: '/teams/download',
         data: {
-            'filePath': filePath,
+            'filePath': 'static/'+filePath,
             'id': id,
             "_token":'{{ csrf_token() }}'
         },success: function (response) {
